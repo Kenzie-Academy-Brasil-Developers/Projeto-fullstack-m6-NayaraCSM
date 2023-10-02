@@ -12,7 +12,7 @@ import middlewares from "./middlewares";
 const app = express();
 app.use(express.json());
 
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/login", loginRouter);
 app.use("/anouncement", anouncementRouter);
 app.use("/comment", commentRouter);
