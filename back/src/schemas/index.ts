@@ -12,12 +12,14 @@ import {
   anouncementSchema,
   imageSchema,
   anouncementCreateSchema,
+  anouncementReadSchema,
   anouncementUpdateSchema,
 } from "./anouncement.schemas";
 
 import {
   commentSchema,
   commentCreateSchema,
+  commentReadSchema,
   commentUpdateSchema,
 } from "./comment.schemas";
 
@@ -31,8 +33,10 @@ export {
   anouncementSchema,
   imageSchema,
   anouncementCreateSchema,
+  anouncementReadSchema,
   anouncementUpdateSchema,
   commentSchema,
   commentCreateSchema,
+  commentReadSchema,
   commentUpdateSchema,
 };

@@ -9,6 +9,13 @@ const commentCreateSchema = commentSchema.omit({
   id: true,
 });
 
+const commentReadSchema = commentSchema.array();
+
 const commentUpdateSchema = commentSchema.omit({ id: true }).partial();
 
-export { commentSchema, commentCreateSchema, commentUpdateSchema };
+export {
+  commentSchema,
+  commentCreateSchema,
+  commentReadSchema,
+  commentUpdateSchema,
+};

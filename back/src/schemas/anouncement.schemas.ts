@@ -23,13 +23,14 @@ const anouncementCreateSchema = anouncementSchema.omit({
   id: true,
 });
 
-const anouncementUpdateSchema = anouncementSchema
-  .omit({ id: true })
-  .partial();
+const anouncementReadSchema = anouncementSchema.array();
+
+const anouncementUpdateSchema = anouncementSchema.omit({ id: true }).partial();
 
 export {
   anouncementSchema,
   imageSchema,
   anouncementCreateSchema,
+  anouncementReadSchema,
   anouncementUpdateSchema,
 };
