@@ -24,7 +24,7 @@ class Address {
   @Column({ length: 70 })
   street: string;
 
-  @Column({ type: "integer", nullable: true })
+  @Column({ type: "varchar", length: 6, nullable: true })
   number?: string | undefined | null;
 
   @Column({ type: "varchar", length: 200, nullable: true })
