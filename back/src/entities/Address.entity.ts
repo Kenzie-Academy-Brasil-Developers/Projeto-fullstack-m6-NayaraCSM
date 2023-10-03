@@ -25,7 +25,7 @@ class Address {
   street: string;
 
   @Column({ type: "integer", nullable: true })
-  number?: number | undefined | null;
+  number?: string | undefined | null;
 
   @Column({ type: "varchar", length: 200, nullable: true })
   complement?: string | undefined | null;
