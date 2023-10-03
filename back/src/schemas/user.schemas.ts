@@ -6,7 +6,7 @@ const addressSchema = z.object({
   state: z.string().max(2),
   city: z.string().max(50),
   street: z.string().max(70),
-  number: z.number().int().positive().nullish(),
+  number: z.string().max(6).nullish(),
   complement: z.string().max(200).nullish(),
 });
 
@@ -29,7 +29,9 @@ const userCreateSchema = userSchema.omit({
 
 const userReturnSchema = userSchema.omit({ password: true });
 
-const userUpdateSchema = userSchema.omit({ id: true, isAdvertiser: true }).partial();
+const userUpdateSchema = userSchema
+  .omit({ id: true, isAdvertiser: true })
+  .partial();
 
 export {
   userSchema,
