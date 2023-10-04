@@ -4,6 +4,7 @@ import { userServices } from "../services";
 import { TUserUpdate } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
+  console.log(req.body);
   const user: User = await userServices.create(req.body);
   return res.status(201).json(user);
 };

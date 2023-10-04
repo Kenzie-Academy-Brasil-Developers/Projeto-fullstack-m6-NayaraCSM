@@ -6,8 +6,6 @@ anouncementRouter.post("");
 anouncementRouter.get("");
 anouncementRouter.get("/:userId");
 
-anouncementRouter.use("/:id");
-
 anouncementRouter.get("/:id");
 anouncementRouter.patch("/:id");
 anouncementRouter.delete("/:id");

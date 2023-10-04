@@ -5,9 +5,10 @@ import { userReturnSchema } from "../schemas";
 
 const create = async (payload: TUserCreate): Promise<User> => {
   const addressInfo: TAddress = payload.address;
+  console.log(payload.address);
   const address: Address = addressRepository.create(addressInfo);
   await addressRepository.save(address);
-
+  console.log(address, "address:");
   const user: User = userRepository.create({
     address: address,
   });
