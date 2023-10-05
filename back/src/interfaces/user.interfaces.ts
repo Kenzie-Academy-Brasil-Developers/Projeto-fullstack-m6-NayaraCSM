@@ -1,11 +1,16 @@
 import { z } from "zod";
-import { userCreateSchema, userReturnSchema, addressSchema } from "../schemas";
+import {
+  userCreateSchema,
+  addressSchema,
+  addressCreateSchema,
+} from "../schemas";
 import { DeepPartial } from "typeorm";
-import { User } from "../entities";
+import { Address, User } from "../entities";
 
 type TUserCreate = z.infer<typeof userCreateSchema>;
-type TUserReturn = z.infer<typeof userReturnSchema>;
 type TUserUpdate = DeepPartial<User>;
 type TAddress = z.infer<typeof addressSchema>;
+type TAddressCreate = z.infer<typeof addressCreateSchema>;
+type TAddressUpdate = DeepPartial<Address>;
 
-export { TUserCreate, TUserReturn, TUserUpdate, TAddress };
+export { TUserCreate, TUserUpdate, TAddress, TAddressCreate, TAddressUpdate };

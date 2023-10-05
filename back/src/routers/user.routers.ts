@@ -19,6 +19,7 @@ userRouter.patch(
   middlewares.checkValidBody(userUpdateSchema),
   middlewares.checkToken,
   middlewares.checkTokenUser,
+  middlewares.checkUniqueEmail,
   userControllers.update
 );
 userRouter.delete(

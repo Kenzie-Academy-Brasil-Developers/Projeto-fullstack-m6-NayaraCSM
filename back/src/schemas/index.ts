@@ -1,9 +1,10 @@
 import {
   userSchema,
   addressSchema,
+  addressCreateSchema,
+  addressUpdateSchema,
   userCreateSchema,
   userUpdateSchema,
-  userReturnSchema,
 } from "./user.schemas";
 
 import { loginSchema } from "./login.schemas";
@@ -26,9 +27,10 @@ import {
 export {
   userSchema,
   addressSchema,
+  addressCreateSchema,
+  addressUpdateSchema,
   userCreateSchema,
   userUpdateSchema,
-  userReturnSchema,
   loginSchema,
   anouncementSchema,
   imageSchema,

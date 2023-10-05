@@ -1,8 +1,9 @@
 import {
   TUserCreate,
-  TUserReturn,
   TUserUpdate,
   TAddress,
+  TAddressCreate,
+  TAddressUpdate,
 } from "./user.interfaces";
 
 import { TLoginCreate, TLoginReturn } from "./login.interfaces";
@@ -22,9 +23,10 @@ import {
 
 export {
   TUserCreate,
-  TUserReturn,
   TUserUpdate,
   TAddress,
+  TAddressCreate,
+  TAddressUpdate,
   TLoginCreate,
   TLoginReturn,
   TAnouncementCreate,

@@ -12,8 +12,8 @@ class Address {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column({ type: "integer" })
-  cep: number;
+  @Column({ length: 8 })
+  cep: string;
 
   @Column({ length: 2 })
   state: string;
@@ -30,7 +30,7 @@ class Address {
   @Column({ type: "varchar", length: 200, nullable: true })
   complement?: string | undefined | null;
 
-  @OneToOne(() => User)
+  @OneToOne(() => User, (user) => user.address, { onDelete: "CASCADE" })
   @JoinColumn()
   user: User;
 }

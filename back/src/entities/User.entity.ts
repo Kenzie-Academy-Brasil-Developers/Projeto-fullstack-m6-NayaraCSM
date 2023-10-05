@@ -27,11 +27,11 @@ class User {
   @Column({ length: 120 })
   password: string;
 
-  @Column({ type: "integer", unique: true })
-  cpf: number;
+  @Column({ length: 11, unique: true })
+  cpf: string;
 
-  @Column({ type: "integer", unique: true })
-  phone: number;
+  @Column({ length: 15, unique: true })
+  phone: string;
 
   @Column({ type: "date" })
   dateBirth: string;
@@ -42,7 +42,7 @@ class User {
   @Column({ default: false })
   isAdvertiser: boolean;
 
-  @OneToOne(() => Address, (address) => address.user)
+  @OneToOne(() => Address, (address) => address.user, { onDelete: "CASCADE" })
   address: Address;
 
   @OneToMany(() => Anouncement, (anouncements) => anouncements.user)
