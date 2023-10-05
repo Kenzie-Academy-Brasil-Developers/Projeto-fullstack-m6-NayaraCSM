@@ -21,8 +21,8 @@ class Anouncement {
   @Column({ length: 50 })
   model: string;
 
-  @Column({ type: "integer" })
-  year: number;
+  @Column({ length: 4 })
+  year: string;
 
   @Column({ length: 20 })
   fuel: string;

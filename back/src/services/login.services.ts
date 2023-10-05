@@ -22,7 +22,7 @@ const create = async ({
   }
 
   const token: string = sign(
-    { isAdvertiser: foundUser.isAdvertiser },
+    { isAdvertiser: foundUser.isAdvertiser, name: foundUser.name },
     process.env.SECRET_KEY!,
     { subject: foundUser.id.toString(), expiresIn: process.env.EXPIRES_IN! }
   );

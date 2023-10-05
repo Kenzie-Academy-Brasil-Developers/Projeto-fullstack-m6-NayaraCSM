@@ -1,8 +1,15 @@
 import { Router } from "express";
+import middlewares from "../middlewares";
+import { anouncementCreateSchema } from "../schemas";
 
 const anouncementRouter: Router = Router();
 
-anouncementRouter.post("");
+anouncementRouter.post(
+  "",
+  middlewares.checkValidBody(anouncementCreateSchema),
+  middlewares.checkToken,
+  middlewares.checkTokenUser
+);
 anouncementRouter.get("");
 anouncementRouter.get("/:userId");
 
