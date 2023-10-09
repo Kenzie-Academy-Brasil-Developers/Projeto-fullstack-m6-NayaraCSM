@@ -1,6 +1,7 @@
 import { Router } from "express";
 import middlewares from "../middlewares";
-import { anouncementCreateSchema } from "../schemas";
+import { anouncementCreateSchema, anouncementUpdateSchema } from "../schemas";
+import { anouncementControllers } from "../controllers";
 
 const anouncementRouter: Router = Router();
 
@@ -8,13 +9,31 @@ anouncementRouter.post(
   "",
   middlewares.checkValidBody(anouncementCreateSchema),
   middlewares.checkToken,
-  middlewares.checkTokenUser
+  middlewares.checkTokenUser,
+  anouncementControllers.create
 );
-anouncementRouter.get("");
-anouncementRouter.get("/:userId");
+anouncementRouter.get("", anouncementControllers.readAll);
 
-anouncementRouter.get("/:id");
-anouncementRouter.patch("/:id");
-anouncementRouter.delete("/:id");
+anouncementRouter.get("/:id", anouncementControllers.readByAnouncementId);
+anouncementRouter.get(
+  "/user/:id",
+  middlewares.checkIdExist,
+  anouncementControllers.readByUserId
+);
+
+anouncementRouter.patch(
+  "/:id",
+  middlewares.checkValidBody(anouncementUpdateSchema),
+  middlewares.checkToken,
+  middlewares.checkTokenUser,
+  anouncementControllers.update
+);
+anouncementRouter.delete(
+  "/:id",
+  middlewares.checkToken,
+  middlewares.checkToken,
+  middlewares.checkTokenUser,
+  anouncementControllers.destroy
+);
 
 export default anouncementRouter;

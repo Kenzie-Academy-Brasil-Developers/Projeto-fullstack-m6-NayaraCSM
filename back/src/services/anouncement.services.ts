@@ -1,5 +1,5 @@
-import { AppDataSource } from "../data-source";
-import { Image, Anouncement, User } from "../entities";
+import { Anouncement, User } from "../entities";
+import { AppError } from "../errors";
 import { TAnouncementCreate, TAnouncementUpdate } from "../interfaces";
 import {
   imageRepository,
@@ -9,55 +9,120 @@ import {
 import { anouncementUpdateSchema } from "../schemas";
 
 const create = async (payload: TAnouncementCreate, userId: number) => {
-  const { image } = payload;
+  const { images, ...rest } = payload;
   const user: User = (await userRepository.findOneBy({ id: userId }))!;
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
   const anouncement: Anouncement = anouncementRepository.create({
-    ...payload,
+    ...rest,
     user,
   });
 
   await anouncementRepository.save(anouncement);
 
-  const createimage = imageRepository.create({
-    image: image.image,
-    anouncement: anouncement,
-  });
-
-  await imageRepository.save(createimage);
+  for await (const imageData of images) {
+    const createImage = imageRepository.create({
+      image: imageData.image,
+      anouncement: anouncement,
+    });
+    await imageRepository.save(createImage);
+  }
 
   const returnedAnouncement = await anouncementRepository.findOne({
     where: { id: anouncement.id },
-    relations: { image: true, user: true },
+    relations: { image: true },
   });
 
   return returnedAnouncement;
 };
 
-const update = async (
-  anouncement: Anouncement,
-  payload: TAnouncementUpdate
-) => {
-  const image: Image = anouncement.image;
-  const payloadimage = payload.image;
+const readAll = async (): Promise<object> => {
+  const anouncements: Array<Anouncement> = await anouncementRepository.find({});
+  return anouncements;
+};
 
-  if (image) {
-    const imageUpdate = imageRepository.create({
-      ...payloadimage,
-    });
-    await imageRepository.save(imageUpdate);
+const readByUserId = async (userId: number) => {
+  const user = await userRepository.findOne({
+    where: {
+      id: userId,
+    },
+    relations: {
+      anouncement: true,
+    },
+  });
+
+  return user!.anouncement;
+};
+
+const readByAnouncementId = async (anouncementId: number) => {
+  const anouncement = await anouncementRepository.findOne({
+    where: {
+      id: anouncementId,
+    },
+    relations: {
+      user: true,
+    },
+  });
+
+  if (!anouncement) {
+    throw new AppError("Anouncement not found", 404);
   }
 
-  const updatedAnouncement: Anouncement = anouncementRepository.create({
+  return anouncement!;
+};
+
+const update = async (anouncementId: number, payload: TAnouncementUpdate) => {
+  const images = payload.image;
+
+  const anouncement = await anouncementRepository.findOne({
+    where: {
+      id: anouncementId,
+    },
+  });
+
+  if (!anouncement) {
+    throw new AppError("Anouncement not found", 404);
+  }
+
+  const anouncementUpdate: Anouncement = anouncementRepository.create({
     ...anouncement,
     ...payload,
   });
-  await anouncementRepository.save(updatedAnouncement);
 
-  return anouncementUpdateSchema.parse(updatedAnouncement);
+  await anouncementRepository.save(anouncementUpdate);
+
+  if (images) {
+    for await (const imageData of images) {
+      const createImage = imageRepository.create({
+        image: imageData.image!,
+        anouncement: anouncement,
+      });
+      await imageRepository.save(createImage);
+    }
+  }
+
+  return anouncementUpdateSchema.parse(anouncementUpdate);
 };
 
-const destroy = async (anouncement: Anouncement): Promise<void> => {
+const destroy = async (anouncementId: number): Promise<void> => {
+  const anouncement = await anouncementRepository.findOneBy({
+    id: anouncementId,
+  });
+
+  if (!anouncement) {
+    throw new AppError("Anouncement not found", 404);
+  }
+
   await anouncementRepository.remove(anouncement);
 };
 
-export default { create, update, destroy };
+export default {
+  create,
+  readAll,
+  readByUserId,
+  readByAnouncementId,
+  update,
+  destroy,
+};

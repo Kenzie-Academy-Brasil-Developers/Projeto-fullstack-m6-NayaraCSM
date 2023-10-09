@@ -11,6 +11,7 @@ import { TLoginCreate, TLoginReturn } from "./login.interfaces";
 import {
   TAnouncementCreate,
   TAnouncementRead,
+  TAnouncementReturn,
   TAnouncementUpdate,
   TImage,
 } from "./anouncement.interfaces";
@@ -31,6 +32,7 @@ export {
   TLoginReturn,
   TAnouncementCreate,
   TAnouncementRead,
+  TAnouncementReturn,
   TAnouncementUpdate,
   TImage,
   TcommentCreate,

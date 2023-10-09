@@ -12,8 +12,10 @@ import { loginSchema } from "./login.schemas";
 import {
   anouncementSchema,
   imageSchema,
+  imageCreateSchema,
   anouncementCreateSchema,
   anouncementReadSchema,
+  anouncementReturnSchema,
   anouncementUpdateSchema,
 } from "./anouncement.schemas";
 
@@ -34,8 +36,10 @@ export {
   loginSchema,
   anouncementSchema,
   imageSchema,
+  imageCreateSchema,
   anouncementCreateSchema,
   anouncementReadSchema,
+  anouncementReturnSchema,
   anouncementUpdateSchema,
   commentSchema,
   commentCreateSchema,

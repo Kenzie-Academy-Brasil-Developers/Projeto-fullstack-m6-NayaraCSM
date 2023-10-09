@@ -19,7 +19,8 @@ const checkToken = (
     if (error) {
       throw new AppError(error.message, 401);
     }
-    res.locals = { ...res.locals, decoded };
+    res.locals.id = decoded.sub;
+    res.locals.isAdvertiser = decoded.isAdvertiser;
   });
 
   return next();

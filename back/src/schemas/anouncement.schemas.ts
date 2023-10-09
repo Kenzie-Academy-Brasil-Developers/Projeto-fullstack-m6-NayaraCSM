@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { userSchema } from "./user.schemas";
 
 const imageSchema = z.object({
   id: z.number().positive(),
@@ -14,6 +13,8 @@ const imageUpdateSchema = imageSchema.omit({ id: true }).partial();
 
 const anouncementSchema = z.object({
   id: z.number().positive(),
+  images: imageCreateSchema.array(),
+  user: z.number().positive(),
   brand: z.string().max(20),
   model: z.string().max(50),
   year: z.string().max(4),
@@ -23,8 +24,6 @@ const anouncementSchema = z.object({
   fipePrice: z.number().default(0).or(z.string().default("0")),
   price: z.number().default(0).or(z.string().default("0")),
   description: z.string().max(150).nullish(),
-  image: imageCreateSchema,
-  user: userSchema,
 });
 
 const anouncementCreateSchema = anouncementSchema.omit({
@@ -34,9 +33,13 @@ const anouncementCreateSchema = anouncementSchema.omit({
 
 const anouncementReadSchema = anouncementSchema.array();
 
+const anouncementReturnSchema = z.array(anouncementSchema);
+
 const anouncementUpdateSchema = z
   .object({
     id: z.number().positive(),
+    image: imageUpdateSchema.array(),
+    user: z.number().positive(),
     brand: z.string().max(20),
     model: z.string().max(50),
     year: z.string().max(4),
@@ -46,8 +49,6 @@ const anouncementUpdateSchema = z
     fipePrice: z.number().default(0).or(z.string().default("0")),
     price: z.number().default(0).or(z.string().default("0")),
     description: z.string().max(150).nullish().optional(),
-    image: imageUpdateSchema,
-    user: userSchema,
   })
   .omit({ id: true, user: true })
   .partial();
@@ -55,7 +56,9 @@ const anouncementUpdateSchema = z
 export {
   anouncementSchema,
   imageSchema,
+  imageCreateSchema,
   anouncementCreateSchema,
   anouncementReadSchema,
+  anouncementReturnSchema,
   anouncementUpdateSchema,
 };

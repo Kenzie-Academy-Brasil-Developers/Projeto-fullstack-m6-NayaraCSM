@@ -11,7 +11,7 @@ const checkIdExist = async (
   const id: number = Number(req.params.id);
 
   const foundEntity: User | null = await userRepository.findOneBy({ id });
-  if (!foundEntity) throw new AppError("User not found", 404);
+  if (!foundEntity) throw new AppError("Not found", 404);
 
   res.locals = { ...res.locals, foundEntity };
 

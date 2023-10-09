@@ -18,6 +18,7 @@ const update = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const destroy = async (req: Request, res: Response): Promise<Response> => {
+  console.log("entity", res.locals.foundEntity);
   await userServices.destroy(res.locals.foundEntity);
   return res.status(204).json();
 };

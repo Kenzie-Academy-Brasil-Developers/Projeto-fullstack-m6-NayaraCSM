@@ -42,14 +42,17 @@ class Anouncement {
   @Column({ type: "varchar", length: 150, nullable: true })
   description?: string | undefined | null;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.anouncement)
   user: User;
 
   @ManyToMany(() => Comment, (comments) => comments.anouncement)
   comment: Comment;
 
-  @OneToMany(() => Image, (images) => images.anouncement)
-  image: Image;
+  @OneToMany(() => Image, (image) => image.anouncement, {
+    onDelete: "CASCADE",
+    eager: true,
+  })
+  image: Image[];
 }
 
 export default Anouncement;
