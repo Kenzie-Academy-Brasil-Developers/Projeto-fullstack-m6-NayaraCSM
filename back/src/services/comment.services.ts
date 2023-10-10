@@ -58,7 +58,6 @@ const readByAnouncementId = async (anouncementId: number) => {
     },
     relations: ["user", "anouncement"],
   });
-  console.log(comments);
 
   return comments;
 };

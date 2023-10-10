@@ -15,7 +15,6 @@ const readByAnouncementId = async (
   res: Response
 ): Promise<Response> => {
   const anouncementId = Number(req.params.id);
-  console.log(anouncementId, "anouncementId");
   const comments = await commentServices.readByAnouncementId(anouncementId);
 
   return res.status(200).json(comments);

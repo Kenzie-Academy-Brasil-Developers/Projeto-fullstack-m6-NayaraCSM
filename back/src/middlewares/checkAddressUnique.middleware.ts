@@ -8,7 +8,6 @@ const checkAddressUnique = async (
   res: Response,
   next: NextFunction
 ): Promise<Response | void> => {
-  console.log(req.body.address);
   const address: TAddress = req.body.address;
   const addressFind = await addressRepository.findOneBy({
     ...address,

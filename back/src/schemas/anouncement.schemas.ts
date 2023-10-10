@@ -14,7 +14,7 @@ const imageUpdateSchema = imageSchema.omit({ id: true }).partial();
 const anouncementSchema = z.object({
   id: z.number().positive(),
   images: imageCreateSchema.array(),
-  user: z.number().positive(),
+  user: z.object({ id: z.number(), name: z.string() }),
   brand: z.string().max(20),
   model: z.string().max(50),
   year: z.string().max(4),
@@ -39,7 +39,7 @@ const anouncementUpdateSchema = z
   .object({
     id: z.number().positive(),
     image: imageUpdateSchema.array(),
-    user: z.number().positive(),
+    user: z.object({ id: z.number(), name: z.string() }),
     brand: z.string().max(20),
     model: z.string().max(50),
     year: z.string().max(4),

@@ -6,7 +6,6 @@ const checkTokenUser = (
   res: Response,
   next: NextFunction
 ): void => {
-  console.log(res.locals);
   const isAdvertiser: boolean = res.locals.isAdvertiser;
   const tokenUser: number = res.locals.id;
   const userId: number = parseInt(req.params.id);
