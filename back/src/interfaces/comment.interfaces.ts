@@ -1,10 +1,9 @@
 import { z } from "zod";
-import { commentCreateSchema, commentReadSchema } from "../schemas";
+import { commentCreateSchema } from "../schemas";
 import { DeepPartial } from "typeorm";
-import { Comment} from "../entities";
+import { Comment } from "../entities";
 
-type TcommentCreate = z.infer<typeof commentCreateSchema>;
-type TcommentRead = z.infer<typeof commentReadSchema>;
-type TcommentUpdate = DeepPartial<Comment>;
+type TCommentCreate = z.infer<typeof commentCreateSchema>;
+type TCommentUpdate = DeepPartial<Comment>;
 
-export { TcommentCreate, TcommentRead, TcommentUpdate };
+export { TCommentCreate, TCommentUpdate };

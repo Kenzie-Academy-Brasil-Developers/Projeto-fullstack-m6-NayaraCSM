@@ -17,9 +17,8 @@ import {
 } from "./anouncement.interfaces";
 
 import {
-  TcommentCreate,
-  TcommentRead,
-  TcommentUpdate,
+  TCommentCreate,
+  TCommentUpdate,
 } from "./comment.interfaces";
 
 export {
@@ -35,7 +34,6 @@ export {
   TAnouncementReturn,
   TAnouncementUpdate,
   TImage,
-  TcommentCreate,
-  TcommentRead,
-  TcommentUpdate,
+  TCommentCreate,
+  TCommentUpdate,
 };

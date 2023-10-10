@@ -22,7 +22,7 @@ const create = async (payload: TAnouncementCreate, userId: number) => {
 
   await anouncementRepository.save(anouncement);
 
-  for await (const imageData of images) {
+  for await (let imageData of images) {
     const createImage = imageRepository.create({
       image: imageData.image,
       anouncement: anouncement,

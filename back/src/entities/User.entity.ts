@@ -48,8 +48,8 @@ class User {
   @OneToMany(() => Anouncement, (anouncements) => anouncements.user)
   anouncement: Anouncement;
 
-  @ManyToMany(() => Comment, (comments) => comments.user)
-  comment: Comment;
+  @OneToMany(() => Comment, (comments) => comments.user)
+  comment: Comment[];
 
   @BeforeInsert()
   @BeforeUpdate()

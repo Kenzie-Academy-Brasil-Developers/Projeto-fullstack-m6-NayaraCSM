@@ -22,7 +22,6 @@ import {
 import {
   commentSchema,
   commentCreateSchema,
-  commentReadSchema,
   commentUpdateSchema,
 } from "./comment.schemas";
 
@@ -43,6 +42,5 @@ export {
   anouncementUpdateSchema,
   commentSchema,
   commentCreateSchema,
-  commentReadSchema,
   commentUpdateSchema,
 };

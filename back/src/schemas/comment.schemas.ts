@@ -2,20 +2,21 @@ import { z } from "zod";
 
 const commentSchema = z.object({
   id: z.number().positive(),
-  comment: z.string().max(20),
+  user: z.object({ id: z.number(), name: z.string() }),
+  anouncement: z.object({ id: z.number() }),
+  comment: z.string().max(500),
+  createdAt: z.string(),
 });
 
 const commentCreateSchema = commentSchema.omit({
   id: true,
+  user: true,
+  anouncement: true,
+  createdAt: true,
 });
 
-const commentReadSchema = commentSchema.array();
+const commentUpdateSchema = commentSchema
+  .omit({ id: true, user: true, anouncement: true, createdAt: true })
+  .partial();
 
-const commentUpdateSchema = commentSchema.omit({ id: true }).partial();
-
-export {
-  commentSchema,
-  commentCreateSchema,
-  commentReadSchema,
-  commentUpdateSchema,
-};
+export { commentSchema, commentCreateSchema, commentUpdateSchema };

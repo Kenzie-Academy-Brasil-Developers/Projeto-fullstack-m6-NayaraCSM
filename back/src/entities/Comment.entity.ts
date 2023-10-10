@@ -4,6 +4,8 @@ import {
   PrimaryGeneratedColumn,
   JoinTable,
   ManyToMany,
+  CreateDateColumn,
+  ManyToOne,
 } from "typeorm";
 import User from "./User.entity";
 import Anouncement from "./Anouncement.entity";
@@ -16,12 +18,13 @@ class Comment {
   @Column({ length: 500 })
   comment: string;
 
-  @ManyToMany(() => User)
-  @JoinTable()
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
+
+  @ManyToOne(() => User, (user) => user.comment, { onDelete: "CASCADE" })
   user: User;
 
-  @ManyToMany(() => Anouncement)
-  @JoinTable()
+  @ManyToOne(() => Anouncement, (anouncement) => anouncement.comment, { onDelete: "CASCADE" })
   anouncement: Anouncement;
 }
 
