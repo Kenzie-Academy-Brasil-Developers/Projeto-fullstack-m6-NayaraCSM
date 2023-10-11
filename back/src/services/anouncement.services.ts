@@ -53,6 +53,10 @@ const readByUserId = async (userId: number) => {
     },
   });
 
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
   return user!.anouncement;
 };
 

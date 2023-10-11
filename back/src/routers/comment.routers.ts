@@ -11,16 +11,13 @@ commentRouter.post(
   middlewares.checkToken,
   commentControllers.create
 );
-commentRouter.get(
-  "/anouncement/:id",
-  middlewares.checkToken,
-  commentControllers.readByAnouncementId
-);
+commentRouter.get("/anouncement/:id", commentControllers.readByAnouncementId);
 
 commentRouter.patch(
   "/:id",
   middlewares.checkValidBody(commentUpdateSchema),
   middlewares.checkToken,
+  middlewares.checkTokenUser,
   commentControllers.update
 );
 commentRouter.delete(

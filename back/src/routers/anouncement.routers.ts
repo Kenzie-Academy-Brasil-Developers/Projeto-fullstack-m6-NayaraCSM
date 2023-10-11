@@ -9,7 +9,7 @@ anouncementRouter.post(
   "",
   middlewares.checkValidBody(anouncementCreateSchema),
   middlewares.checkToken,
-  middlewares.checkTokenUser,
+  middlewares.checkIsAdvertiser,
   anouncementControllers.create
 );
 anouncementRouter.get("", anouncementControllers.readAll);

@@ -6,7 +6,7 @@ const checkIsAdvertiser = (
   res: Response,
   next: NextFunction
 ): void => {
-  const advertiser: boolean = res.locals.decoded.isAdvertiser;
+  const advertiser: boolean = res.locals.isAdvertiser;
   if (!advertiser) throw new AppError("Insufficient permission", 403);
 
   return next();
