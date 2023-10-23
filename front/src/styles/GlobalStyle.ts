@@ -99,6 +99,10 @@ export default createGlobalStyle`
 
     --input-label-font-weight: 500;
     --input-label-font-size: 14px; 
+
+    fonts: {
+      body: '"Inter", sans-serif',
+    },
   }
 
   

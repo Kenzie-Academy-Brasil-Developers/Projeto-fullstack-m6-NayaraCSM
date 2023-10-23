@@ -1,5 +1,9 @@
+import { RoutesMain } from "./routes/RoutesMain";
+
 function App() {
-  return <></>;
+  return (
+    <RoutesMain />
+  )
 }
 
 export default App;
