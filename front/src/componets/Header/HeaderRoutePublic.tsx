@@ -1,13 +1,29 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import menu from "../../assets/icon-menu.svg";
+import NavebarRoutePublic from "./NavebarRoutePublic";
 
-const HeaderRoutePublic = () => {
+const HeaderRoutePublic = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
+
+  const OpenMenu = () => {
+    setOpen(!open);
+  };
+
   return (
     <header>
       <h1>Motors shop</h1>
-      <nav>
-        <Link to="/login">Fazer Login</Link>
-        <Link to="/register">Cadastrar</Link>
-      </nav>
+      <div className="menu-mobile">
+        <button
+          onClick={OpenMenu}
+          aria-label={!open ? "Abrir Menu" : "Fechar Menu"}
+        >
+          {!open ? <img src={menu} /> : "x"}
+        </button>
+        {open ? <NavebarRoutePublic /> : ""}
+      </div>
+      <div className="menu">
+        <NavebarRoutePublic />
+      </div>
     </header>
   );
 };
