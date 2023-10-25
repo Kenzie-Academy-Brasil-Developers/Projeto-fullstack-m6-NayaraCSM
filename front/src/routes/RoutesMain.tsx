@@ -3,6 +3,8 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
+import UserPagePublic from "../pages/UserPage/Public";
+import AnouncementPagePublic from "../pages/AnouncementPage/Public";
 
 export const RoutesMain = () => {
   return (
@@ -12,6 +14,14 @@ export const RoutesMain = () => {
       </Route>
       <Route path="/home">
         <Route index element={<HomePage />} />
+      </Route>
+
+      <Route path="/anouncement/:id">
+        <Route index element={<AnouncementPagePublic />} />
+      </Route>
+
+      <Route path="/anouncement/user/:id">
+        <Route index element={<UserPagePublic />} />
       </Route>
 
       <Route path="/login">
