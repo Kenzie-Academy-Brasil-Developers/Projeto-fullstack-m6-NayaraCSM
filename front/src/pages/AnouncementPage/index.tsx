@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Link, useParams } from "react-router-dom";
-import HeaderRoutePublic from "../../componets/Header/HeaderRoutePublic";
+import { IAnouncement, IImage } from "../HomePage";
+import HeaderRoutePublic from "../../componets/Header/HeaderPublic/HeaderRoutePublic";
 import CardComment from "../../componets/CardComment";
 import Footer from "../../componets/Footer";
-import { IAnouncement, IImage } from "../../componets/CardAnouncement";
 
-const AnouncementPagePublic = () => {
+const AnouncementPage = () => {
   const [anouncement, setAnouncement] = useState<IAnouncement | null>(null);
   const { id } = useParams();
 
@@ -82,4 +82,4 @@ const AnouncementPagePublic = () => {
   );
 };
 
-export default AnouncementPagePublic;
+export default AnouncementPage;

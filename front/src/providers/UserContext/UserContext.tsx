@@ -43,7 +43,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       api.defaults.headers.common.Userorization = `Bearer ${token}`;
       localStorage.setItem("user:token", token);
 
-      navigate("dashboard");
+      navigate("home");
     } catch (err) {
       console.log(err);
     }

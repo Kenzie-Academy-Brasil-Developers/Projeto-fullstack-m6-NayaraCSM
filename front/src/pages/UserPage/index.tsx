@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../../services/api";
-import HeaderRoutePublic from "../../componets/Header/HeaderRoutePublic";
-import Footer from "../../componets/Footer";
+import { IImage } from "../HomePage";
+import HeaderRoutePublic from "../../componets/Header/HeaderPublic/HeaderRoutePublic";
 import CardAnouncementUser from "../../componets/CardAnouncement/CardAnouncementUser";
-import { IImage } from "../../componets/CardAnouncement";
+import Footer from "../../componets/Footer";
 
 export interface IUserAdvertiser {
   id: number;
@@ -28,7 +28,7 @@ export interface IAnoucementUser {
   image: IImage[];
 }
 
-const UserPagePublic = () => {
+const UserPage = () => {
   const [user, setUser] = useState<IUserAdvertiser | null>(null);
   const { id } = useParams();
 
@@ -74,4 +74,4 @@ const UserPagePublic = () => {
   );
 };
 
-export default UserPagePublic;
+export default UserPage;

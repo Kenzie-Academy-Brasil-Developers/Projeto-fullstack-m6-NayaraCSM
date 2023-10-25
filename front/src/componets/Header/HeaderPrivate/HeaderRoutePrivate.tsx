@@ -1,8 +1,8 @@
 import { useState } from "react";
-import menu from "../../assets/icon-menu.svg";
-import NavebarRoutePublic from "./NavebarRoutePublic";
+import menu from "../../../assets/icon-menu.svg";
+import NavebarRoutePrivate from "../Navbar/NavbarRoutePrivate";
 
-const HeaderRoutePublic = (): JSX.Element => {
+const HeaderRoutePrivate = (): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const OpenMenu = () => {
@@ -19,13 +19,13 @@ const HeaderRoutePublic = (): JSX.Element => {
         >
           {!open ? <img src={menu} /> : "x"}
         </button>
-        {open ? <NavebarRoutePublic /> : ""}
+        {open ? <NavebarRoutePrivate /> : ""}
       </div>
       <div className="menu">
-        <NavebarRoutePublic />
+        <NavebarRoutePrivate />
       </div>
     </header>
   );
 };
 
-export default HeaderRoutePublic;
+export default HeaderRoutePrivate;

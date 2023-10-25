@@ -1,10 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import HomePagePublic from "../pages/HomePage";
+import AnouncementPagePublic from "../pages/AnouncementPage";
+import UserPagePublic from "../pages/UserPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import DashboardPage from "../pages/DashboardPage";
-import UserPagePublic from "../pages/UserPage/Public";
-import AnouncementPagePublic from "../pages/AnouncementPage/Public";
 
 export const RoutesMain = () => {
   return (
@@ -13,7 +12,7 @@ export const RoutesMain = () => {
         <Route index element={<Navigate to="/home" />} />
       </Route>
       <Route path="/home">
-        <Route index element={<HomePage />} />
+        <Route index element={<HomePagePublic />} />
       </Route>
 
       <Route path="/anouncement/:id">
@@ -30,10 +29,6 @@ export const RoutesMain = () => {
 
       <Route path="/register">
         <Route index element={<RegisterPage />} />
-      </Route>
-
-      <Route path="/dashboard">
-        <Route index element={<DashboardPage />} />
       </Route>
     </Routes>
   );

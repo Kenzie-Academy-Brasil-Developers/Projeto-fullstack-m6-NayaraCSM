@@ -1,7 +1,4 @@
-import {
-  IAnoucementUser,
-  IUserAdvertiser,
-} from "../../../pages/UserPage/Public";
+import { IAnoucementUser, IUserAdvertiser } from "../../../pages/UserPage";
 
 interface ICardAnouncementUser {
   anouncement: IAnoucementUser;
