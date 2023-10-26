@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { Nav } from "../styled";
 
 const NavebarRoutePublic = () => {
-    return (
-        <nav>
-        <Link to="/login">Fazer Login</Link>
-        <Link to="/register">Cadastrar</Link>
-      </nav>
-    )
-}
+  return (
+    <Nav>
+      <Link to="/login" className="button-login">Fazer Login</Link>
+      <Link to="/register" className="button-register">Cadastrar</Link>
+    </Nav>
+  );
+};
 
-export default NavebarRoutePublic
+export default NavebarRoutePublic;

@@ -1,7 +1,8 @@
-
 import { useState } from "react";
 import menu from "../../../assets/icon-menu.svg";
+import close from "../../../assets/icon-close.svg";
 import NavebarRoutePublic from "../Navbar/NavbarRoutePublic";
+import { Header, Menu, MenuMobile } from "../styled";
 
 const HeaderRoutePublic = (): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -11,21 +12,25 @@ const HeaderRoutePublic = (): JSX.Element => {
   };
 
   return (
-    <header>
+    <Header>
       <h1>Motors shop</h1>
-      <div className="menu-mobile">
+      <MenuMobile>
         <button
           onClick={OpenMenu}
           aria-label={!open ? "Abrir Menu" : "Fechar Menu"}
         >
-          {!open ? <img src={menu} /> : "x"}
+          {!open ? (
+            <img src={menu} id="open" />
+          ) : (
+            <img src={close} id="close" />
+          )}
         </button>
         {open ? <NavebarRoutePublic /> : ""}
-      </div>
-      <div className="menu">
+      </MenuMobile>
+      <Menu>
         <NavebarRoutePublic />
-      </div>
-    </header>
+      </Menu>
+    </Header>
   );
 };
 

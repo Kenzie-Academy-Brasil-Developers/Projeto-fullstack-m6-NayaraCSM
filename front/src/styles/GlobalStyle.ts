@@ -7,17 +7,17 @@ export default createGlobalStyle`
     --color-brand-3: #80A6F0;
     --color-brand-4: #EDEAFD;
 
-    --color-gray-0: #080D0D;
-    --color-gray-1: #212529;
-    --color-gray-2: #495057;
-    --color-gray-3: #868E96;
-    --color-gray-4: #ADB5BD;
-    --color-gray-5: #CED4DA;
-    --color-gray-6: #DEE2E6;
-    --color-gray-7: #E9ECEF;
-    --color-gray-8: #F1F3F5;
-    --color-gray-9: #F8F9FA;
-    --color-gray-10: #FDFDFD;
+    --color-grey-0: #080D0D;
+    --color-grey-1: #212529;
+    --color-grey-2: #495057;
+    --color-grey-3: #868E96;
+    --color-grey-4: #ADB5BD;
+    --color-grey-5: #CED4DA;
+    --color-grey-6: #DEE2E6;
+    --color-grey-7: #E9ECEF;
+    --color-grey-8: #F1F3F5;
+    --color-grey-9: #F8F9FA;
+    --color-grey-10: #FDFDFD;
     --color-white-fixed: #FFFFFF;
 
     --color-alert-1: #CD2B31;
@@ -100,9 +100,6 @@ export default createGlobalStyle`
     --input-label-font-weight: 500;
     --input-label-font-size: 14px; 
 
-    fonts: {
-      body: '"Inter", sans-serif',
-    },
   }
 
   
@@ -116,9 +113,13 @@ export default createGlobalStyle`
   body,html{
     width: 100vw;
     height: 100vh;
+    font-family: 'Inter', sans-serif;
   }
 
   button {
-    cursor: pointer;
+    background: transparent;
+    cursor: default;
+    padding: 1px 6px;
+    text-align: center;
   }
 `;

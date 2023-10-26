@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Link, useParams } from "react-router-dom";
 import { IAnouncement, IImage } from "../HomePage";
-import HeaderRoutePublic from "../../componets/Header/HeaderPublic/HeaderRoutePublic";
+import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import CardComment from "../../componets/CardComment";
 import Footer from "../../componets/Footer";
 

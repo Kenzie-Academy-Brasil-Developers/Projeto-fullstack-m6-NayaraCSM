@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
-import HeaderRoutePublic from "../../componets/Header/HeaderPublic/HeaderRoutePublic";
+import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import car from "../../assets/Photo.svg";
 import CardAnouncement from "../../componets/CardAnouncement";
 import Footer from "../../componets/Footer";

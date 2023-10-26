@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TLoginData, loginSchema } from "./validator";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import HeaderRoutePublic from "../../componets/Header/HeaderPublic/HeaderRoutePublic";
+import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import Input from "../../componets/Input";
 import Footer from "../../componets/Footer";
 

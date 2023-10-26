@@ -1,9 +1,16 @@
+import { UserProvider } from "./providers/UserContext/UserContext";
 import { RoutesMain } from "./routes/RoutesMain";
+import GlobalStyle from "./styles/GlobalStyle";
 
 function App() {
   return (
-    <RoutesMain />
-  )
+    <>
+      <GlobalStyle />
+      <UserProvider>
+        <RoutesMain />
+      </UserProvider>
+    </>
+  );
 }
 
 export default App;
