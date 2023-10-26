@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 import { IAnoucementUser, IUserAdvertiser } from "../../../pages/UserPage";
 
 interface ICardAnouncementUser {
@@ -6,6 +8,9 @@ interface ICardAnouncementUser {
 }
 
 const CardAnouncementUser = ({ anouncement, user }: ICardAnouncementUser) => {
+  const token = localStorage.getItem("user:token");
+  const decode = token ? jwt_decode<{ sub: number }>(token) : null;
+
   return (
     <li>
       <img src={anouncement.image[0].image} alt="imagem de um carro" />
@@ -21,6 +26,12 @@ const CardAnouncementUser = ({ anouncement, user }: ICardAnouncementUser) => {
         <p>{anouncement.mileage} Km</p>
         <p>{anouncement.year}</p>
         <p>R$ {anouncement.price}</p>
+      </div>
+      <div>
+        {decode?.sub == user.id ? <button>Editar</button> : ""}
+        <Link to={`/anouncement/${anouncement.id}`} key={anouncement.id}>
+          Ver detalhes
+        </Link>
       </div>
     </li>
   );

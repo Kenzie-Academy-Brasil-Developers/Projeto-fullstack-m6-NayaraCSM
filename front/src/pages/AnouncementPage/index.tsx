@@ -5,9 +5,11 @@ import { IAnouncement, IImage } from "../HomePage";
 import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import CardComment from "../../componets/CardComment";
 import Footer from "../../componets/Footer";
+import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
 
 const AnouncementPage = () => {
   const [anouncement, setAnouncement] = useState<IAnouncement | null>(null);
+  const token = localStorage.getItem("user:token");
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const AnouncementPage = () => {
 
   return (
     <main>
-      <HeaderRoutePublic />
+      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
       <section>
         <div>
           <img src={anouncement?.image[0].image} alt="imagem de um carro" />

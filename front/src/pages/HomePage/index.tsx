@@ -5,6 +5,7 @@ import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import car from "../../assets/Photo.svg";
 import CardAnouncement from "../../componets/CardAnouncement";
 import Footer from "../../componets/Footer";
+import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
 
 export interface IAnouncement {
   id: number;
@@ -33,6 +34,7 @@ export interface IImage {
 
 const HomePage = () => {
   const [anouncements, setAnouncements] = useState<IAnouncement[]>([]);
+  const token = localStorage.getItem("user:token");
 
   useEffect(() => {
     (async () => {
@@ -44,7 +46,7 @@ const HomePage = () => {
 
   return (
     <main>
-      <HeaderRoutePublic />
+      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
       <div>
         <img src={car} />
         <h3>Motors Shop</h3>

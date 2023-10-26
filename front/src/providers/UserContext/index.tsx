@@ -75,7 +75,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("user:token");
     navigate("/");
   };
 

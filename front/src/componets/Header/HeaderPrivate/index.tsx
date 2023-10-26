@@ -1,9 +1,11 @@
+import jwt_decode from "jwt-decode";
 import { useState } from "react";
-import menu from "../../../assets/icon-menu.svg";
 import NavebarRoutePrivate from "../Navbar/NavbarRoutePrivate";
 
 const HeaderRoutePrivate = (): JSX.Element => {
   const [open, setOpen] = useState(false);
+  const token = localStorage.getItem("user:token");
+  const decode = token ? jwt_decode<{ name: string }>(token) : null;
 
   const OpenMenu = () => {
     setOpen(!open);
@@ -17,7 +19,8 @@ const HeaderRoutePrivate = (): JSX.Element => {
           onClick={OpenMenu}
           aria-label={!open ? "Abrir Menu" : "Fechar Menu"}
         >
-          {!open ? <img src={menu} /> : "x"}
+          <i>{decode?.name.substring(0, 1)}</i>
+          <h3>{decode?.name}</h3>
         </button>
         {open ? <NavebarRoutePrivate /> : ""}
       </div>

@@ -1,10 +1,12 @@
+import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { IImage } from "../HomePage";
 import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import CardAnouncementUser from "../../componets/CardAnouncement/CardAnouncementUser";
 import Footer from "../../componets/Footer";
+import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
 
 export interface IUserAdvertiser {
   id: number;
@@ -30,6 +32,8 @@ export interface IAnoucementUser {
 
 const UserPage = () => {
   const [user, setUser] = useState<IUserAdvertiser | null>(null);
+  const token = localStorage.getItem("user:token");
+  const decode = token ? jwt_decode<{ isAdvertiser: boolean }>(token) : null;
   const { id } = useParams();
 
   useEffect(() => {
@@ -44,27 +48,26 @@ const UserPage = () => {
 
   return (
     <main>
-      <HeaderRoutePublic />
+      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
       <section>
         <i>{user?.name.substring(0, 1)}</i>
         <div>
           <h3>{user?.name}</h3>
           <span>{user?.isAdvertiser ? "Anunciante" : "Comprador"}</span>
-          <p>{user?.description}</p>
         </div>
+        <p>{user?.description}</p>
+        {decode?.isAdvertiser ? <button>Criar anúncio</button> : ""}
       </section>
       <section>
         <h3>Anúncios</h3>
         <ul>
           {user?.anouncement.map((anouncement) => {
             return (
-              <Link to={`/anouncement/${anouncement.id}`} key={anouncement.id}>
-                <CardAnouncementUser
-                  key={anouncement.id}
-                  anouncement={anouncement}
-                  user={user}
-                />
-              </Link>
+              <CardAnouncementUser
+                key={anouncement.id}
+                anouncement={anouncement}
+                user={user}
+              />
             );
           })}
         </ul>
