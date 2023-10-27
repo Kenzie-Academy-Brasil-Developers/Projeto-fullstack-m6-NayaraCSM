@@ -7,6 +7,8 @@ import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import CardAnouncementUser from "../../componets/CardAnouncement/CardAnouncementUser";
 import Footer from "../../componets/Footer";
 import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
+import FormAnouncementModal from "../../componets/Modal/AddModal/FormAnouncementModal";
+import AnouncementSucessModal from "../../componets/Modal/SucessModal/AnouncementSucessModal";
 
 export interface IUserAdvertiser {
   id: number;
@@ -32,6 +34,8 @@ export interface IAnoucementUser {
 
 const UserPage = () => {
   const [user, setUser] = useState<IUserAdvertiser | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenSucess, setIsModalOpenSucess] = useState(false);
   const token = localStorage.getItem("user:token");
   const decode = token ? jwt_decode<{ isAdvertiser: boolean }>(token) : null;
   const { id } = useParams();
@@ -46,9 +50,21 @@ const UserPage = () => {
     })();
   }, [id]);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const closeModalSucessAnouncement = () => {
+    setIsModalOpenSucess(false);
+  };
+
   return (
     <main>
-      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
+      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}
       <section>
         <i>{user?.name.substring(0, 1)}</i>
         <div>
@@ -56,7 +72,11 @@ const UserPage = () => {
           <span>{user?.isAdvertiser ? "Anunciante" : "Comprador"}</span>
         </div>
         <p>{user?.description}</p>
-        {decode?.isAdvertiser ? <button>Criar anúncio</button> : ""}
+        {decode?.isAdvertiser ? (
+          <button onClick={() => openModal()}>Criar anúncio</button>
+        ) : (
+          ""
+        )}
       </section>
       <section>
         <h3>Anúncios</h3>
@@ -73,6 +93,17 @@ const UserPage = () => {
         </ul>
       </section>
       <Footer />
+      {isModalOpen && (
+        <FormAnouncementModal
+          closeModal={closeModal}
+          setIsModalOpenSucess={setIsModalOpenSucess}
+        />
+      )}
+      {isModalOpenSucess && (
+        <AnouncementSucessModal
+          closeModalSucessAnouncement={closeModalSucessAnouncement}
+        />
+      )}
     </main>
   );
 };

@@ -29,8 +29,8 @@ const CardComment = () => {
 
   const formatRelativeTime = (createdAt: string | number) => {
     const now = new Date();
-    const commentDate = new Date(String(createdAt)); // Força a conversão para string
-    const timeDifference = now.getTime() - commentDate.getTime(); // Converte para milissegundos
+    const commentDate = new Date(String(createdAt));
+    const timeDifference = now.getTime() - commentDate.getTime();
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
     if (daysDifference === 0) {
