@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import Input from "../../componets/Input";
 import Footer from "../../componets/Footer";
+import { ContainerLogin } from "./styled";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const { signIn } = useAuth();
@@ -19,28 +21,32 @@ const LoginPage = () => {
   return (
     <main>
       <HeaderRoutePublic />
-      <form onSubmit={handleSubmit(signIn)}>
-        <Input
-          id="login"
-          label="Email"
-          placeholder="Digite seu email"
-          type="email"
-          {...register("email")}
-          error={errors.email}
-        />
-        <Input
-          id="senha"
-          label="Senha"
-          placeholder="Digite sua senha"
-          type="password"
-          {...register("password")}
-          error={errors.password}
-        />
-        <span>Esqueci minha senha</span>
-        <button type="submit">Entrar</button>
-        <span>Ainda não possue conta?</span>
-        <button>Cadastrar</button>
-      </form>
+      <ContainerLogin>
+        <form onSubmit={handleSubmit(signIn)}>
+          <Input
+            id="login"
+            label="Email"
+            placeholder="Digite seu email"
+            type="email"
+            {...register("email")}
+            error={errors.email}
+          />
+          <Input
+            id="senha"
+            label="Senha"
+            placeholder="Digite sua senha"
+            type="password"
+            {...register("password")}
+            error={errors.password}
+          />
+          <span className="span-password">Esqueci minha senha</span>
+          <button type="submit">Entrar</button>
+          <span className="span-register">Ainda não possue conta?</span>
+          <Link to="/register" className="for-register">
+            Cadastrar
+          </Link>
+        </form>
+      </ContainerLogin>
       <Footer />
     </main>
   );
