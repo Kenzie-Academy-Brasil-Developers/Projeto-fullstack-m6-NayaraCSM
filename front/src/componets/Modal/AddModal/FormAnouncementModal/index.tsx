@@ -60,6 +60,7 @@ const FormAnouncementModal = ({
             <Input
               id="brand"
               label="Marca"
+              placeholder="Chevrolet"
               type="text"
               {...register("brand")}
               error={errors.brand}
@@ -67,6 +68,7 @@ const FormAnouncementModal = ({
             <Input
               id="model"
               label="Modelo"
+              placeholder="Camaro ss 6.2 v8 16v"
               type="text"
               {...register("model")}
               error={errors.model}
@@ -74,6 +76,7 @@ const FormAnouncementModal = ({
             <Input
               id="year"
               label="Ano"
+              placeholder="2018"
               type="text"
               {...register("year")}
               error={errors.year}
@@ -81,6 +84,7 @@ const FormAnouncementModal = ({
             <Input
               id="fuel"
               label="Combustível"
+              placeholder="Gasolina / Etanol"
               type="text"
               {...register("fuel")}
               error={errors.fuel}
@@ -88,6 +92,7 @@ const FormAnouncementModal = ({
             <Input
               id="mileage"
               label="Quilometragem"
+              placeholder="30000"
               type="text"
               {...register("mileage")}
               error={errors.mileage}
@@ -95,6 +100,7 @@ const FormAnouncementModal = ({
             <Input
               id="color"
               label="Cor"
+              placeholder="Branco"
               type="text"
               {...register("color")}
               error={errors.color}
@@ -102,6 +108,7 @@ const FormAnouncementModal = ({
             <Input
               id="fipePrice"
               label="Preço tabela Fipe"
+              placeholder="48000"
               type="text"
               {...register("fipePrice")}
               error={errors.fipePrice}
@@ -109,6 +116,7 @@ const FormAnouncementModal = ({
             <Input
               id="price"
               label="Preço"
+              placeholder="50000"
               type="text"
               {...register("price")}
               error={errors.price}
@@ -116,6 +124,7 @@ const FormAnouncementModal = ({
             <Input
               id="description"
               label="Descrição"
+              placeholder="Digite a descrição"
               type="text"
               {...register("description")}
               error={errors.description}
@@ -125,6 +134,7 @@ const FormAnouncementModal = ({
                 <Input
                   id={`image${index}`}
                   label={`Imagem ${index + 1}`}
+                  placeholder="https://image.com"
                   type="text"
                   {...register(`images.${index}.image`)}
                   error={errors.images?.[index]?.image}

@@ -72,7 +72,8 @@ export const ContainerRegister = styled.div`
     width: 100%;
     margin: 0.5rem 0;
     padding: 0.7rem 0;
-    font-size: var(--button-medium-text-font-size: 14px);
+    font-weight: var(--button-medium-text-font-weight);
+    font-size: var(--button-medium-text-font-size);
     border-radius: 3px;
     border: 1px solid var(--color-grey-4);
     background: var(--color-brand-1);

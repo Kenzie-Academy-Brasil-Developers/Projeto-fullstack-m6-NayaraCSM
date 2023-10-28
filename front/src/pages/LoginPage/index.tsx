@@ -23,6 +23,7 @@ const LoginPage = () => {
         <Input
           id="login"
           label="Email"
+          placeholder="Digite seu email"
           type="email"
           {...register("email")}
           error={errors.email}
@@ -30,6 +31,7 @@ const LoginPage = () => {
         <Input
           id="senha"
           label="Senha"
+          placeholder="Digite sua senha"
           type="password"
           {...register("password")}
           error={errors.password}

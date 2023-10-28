@@ -22,7 +22,7 @@ export const ContainerInput = styled.div`
     border: 1px solid var(--color-grey-5);
   }
   input::placeholder {
-    text-align: center;
+    padding: 0 0.5rem;
     color: var(--color-grey-4);
   }
   p {

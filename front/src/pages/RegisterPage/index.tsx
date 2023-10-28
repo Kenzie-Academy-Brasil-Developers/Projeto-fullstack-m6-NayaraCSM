@@ -33,6 +33,7 @@ export const RegisterPage = () => {
           <Input
             id="name"
             label="Nome"
+            placeholder="Digite seu nome"
             type="text"
             {...register("name")}
             error={errors.name}
@@ -40,6 +41,7 @@ export const RegisterPage = () => {
           <Input
             id="email"
             label="Email"
+            placeholder="Digite seu email"
             type="email"
             {...register("email")}
             error={errors.email}
@@ -47,13 +49,15 @@ export const RegisterPage = () => {
           <Input
             id="cpf"
             label="CPF"
+            placeholder="00000000000"
             type="text"
             {...register("cpf")}
             error={errors.cpf}
           />
           <Input
             id="phone"
-            label="Número de Telefone"
+            label="Celular"
+            placeholder="Digite seu número"
             type="text"
             {...register("phone")}
             error={errors.phone}
@@ -68,6 +72,7 @@ export const RegisterPage = () => {
           <Input
             id="description"
             label="Descrição"
+            placeholder="Digite descrição"
             type="text"
             {...register("description")}
             error={errors.description}
@@ -76,6 +81,7 @@ export const RegisterPage = () => {
           <Input
             id="cep"
             label="CEP"
+            placeholder="0000000"
             type="text"
             {...register("cep")}
             error={errors.cep}
@@ -84,6 +90,7 @@ export const RegisterPage = () => {
             <Input
               id="state"
               label="Estado"
+              placeholder="Digite seu estado"
               type="text"
               {...register("state")}
               error={errors.state}
@@ -91,6 +98,7 @@ export const RegisterPage = () => {
             <Input
               id="city"
               label="Cidade"
+              placeholder="Digite sua cidade"
               type="text"
               {...register("city")}
               error={errors.city}
@@ -99,6 +107,7 @@ export const RegisterPage = () => {
           <Input
             id="street"
             label="Rua"
+            placeholder="Digite sua rua"
             type="text"
             {...register("street")}
             error={errors.street}
@@ -107,6 +116,7 @@ export const RegisterPage = () => {
             <Input
               id="number"
               label="Número"
+              placeholder="Digite seu número"
               type="text"
               {...register("number")}
               error={errors.number}
@@ -114,6 +124,7 @@ export const RegisterPage = () => {
             <Input
               id="complement"
               label="Complemento"
+              placeholder="Ex: apartamento 35"
               type="text"
               {...register("complement")}
               error={errors.complement}
@@ -143,6 +154,7 @@ export const RegisterPage = () => {
           <Input
             id="password"
             label="Senha"
+            placeholder="Digite sua senha"
             type="password"
             {...register("password")}
             error={errors.password}
@@ -150,6 +162,7 @@ export const RegisterPage = () => {
           <Input
             id="confirmPassword"
             label="Confirmar Senha"
+            placeholder="Digite sua senha novamente"
             type="password"
             {...register("confirm")}
             error={errors.confirm}
