@@ -97,8 +97,10 @@ export default createGlobalStyle`
     --input-placeholder-font-weight: 400;
     --input-placeholder-font-size: 16px;
 
-    --input-label-font-weight: 500;
-    --input-label-font-size: 14px; 
+    --input-label-font-weight: 600;
+    --input-label-font-size: 14px;
+    
+    --zod-error-font-size: 12px;
 
   }
 

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerRegister = styled.div`
+  width: 100%;
   background: var(--color-grey-7);
   padding: 1rem;
 
   form {
-    margin: 0.5rem;
-    padding: 2.5rem;
+    width: 100%;
+    padding: 2rem;
     background: var(--color-white-fixed);
   }
 
@@ -21,14 +22,18 @@ export const ContainerRegister = styled.div`
     padding: 1.5rem 0;
   }
 
-  .address-local {
+  .address-local,
+  .details-address {
+    width: 100%;
+    gap: 1rem;
     display: flex;
     justify-content: space-between;
   }
 
-  .details-address {
-    display: flex;
-    justify-content: space-between;
+  .address-local Input,
+  .details-address input {
+    flex: 1;
+    margin-right: 10px;
   }
 
   .type-account {
@@ -65,6 +70,7 @@ export const ContainerRegister = styled.div`
 
   button {
     width: 100%;
+    margin: 0.5rem 0;
     padding: 0.7rem 0;
     font-size: var(--button-medium-text-font-size: 14px);
     border-radius: 3px;
