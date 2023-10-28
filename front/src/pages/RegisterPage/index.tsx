@@ -2,13 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { TRegisterData, registerSchema } from "./validator";
+import { ContainerRegister } from "./styled";
 import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import Input from "../../componets/Input";
 import Footer from "../../componets/Footer";
 import RegisterSucessModal from "../../componets/Modal/SucessModal/RegisterSucessModal";
 
 export const RegisterPage = () => {
-  const { newUser, isModalOpenSucessRegister, setIsModalOpenSucessRegister } = useAuth();
+  const { newUser, isModalOpenSucessRegister, setIsModalOpenSucessRegister } =
+    useAuth();
   const {
     register,
     handleSubmit,
@@ -24,113 +26,119 @@ export const RegisterPage = () => {
   return (
     <main>
       <HeaderRoutePublic />
-      <form onSubmit={handleSubmit(newUser)}>
-        <h2>Cadastro</h2>
-        <h3>Informações pessoais</h3>
-        <Input
-          id="name"
-          label="Nome"
-          type="text"
-          {...register("name")}
-          error={errors.name}
-        />
-        <Input
-          id="email"
-          label="Email"
-          type="email"
-          {...register("email")}
-          error={errors.email}
-        />
-        <Input
-          id="cpf"
-          label="CPF"
-          type="text"
-          {...register("cpf")}
-          error={errors.cpf}
-        />
-        <Input
-          id="phone"
-          label="Número de Telefone"
-          type="text"
-          {...register("phone")}
-          error={errors.phone}
-        />
-        <Input
-          id="dateBirth"
-          label="Data de Nascimento"
-          type="date"
-          {...register("dateBirth")}
-          error={errors.dateBirth}
-        />
-        <Input
-          id="description"
-          label="Descrição"
-          type="text"
-          {...register("description")}
-          error={errors.description}
-        />
-        <h3>Informações de endereço</h3>
-        <Input
-          id="cep"
-          label="CEP"
-          type="text"
-          {...register("cep")}
-          error={errors.cep}
-        />
-        <Input
-          id="state"
-          label="Estado"
-          type="text"
-          {...register("state")}
-          error={errors.state}
-        />
-        <Input
-          id="city"
-          label="Cidade"
-          type="text"
-          {...register("city")}
-          error={errors.city}
-        />
-        <Input
-          id="street"
-          label="Rua"
-          type="text"
-          {...register("street")}
-          error={errors.street}
-        />
-        <Input
-          id="number"
-          label="Número"
-          type="text"
-          {...register("number")}
-          error={errors.number}
-        />
-        <Input
-          id="complement"
-          label="Complemento"
-          type="text"
-          {...register("complement")}
-          error={errors.complement}
-        />
-        <h3>Tipo de conta</h3>
-        <div>
-          <div>
-            <input
-              type="radio"
-              id="buyer"
-              value="false"
-              {...register("isAdvertiser")}
+      <ContainerRegister>
+        <form onSubmit={handleSubmit(newUser)}>
+          <h2>Cadastro</h2>
+          <h3>Informações pessoais</h3>
+          <Input
+            id="name"
+            label="Nome"
+            type="text"
+            {...register("name")}
+            error={errors.name}
+          />
+          <Input
+            id="email"
+            label="Email"
+            type="email"
+            {...register("email")}
+            error={errors.email}
+          />
+          <Input
+            id="cpf"
+            label="CPF"
+            type="text"
+            {...register("cpf")}
+            error={errors.cpf}
+          />
+          <Input
+            id="phone"
+            label="Número de Telefone"
+            type="text"
+            {...register("phone")}
+            error={errors.phone}
+          />
+          <Input
+            id="dateBirth"
+            label="Data de Nascimento"
+            type="date"
+            {...register("dateBirth")}
+            error={errors.dateBirth}
+          />
+          <Input
+            id="description"
+            label="Descrição"
+            type="text"
+            {...register("description")}
+            error={errors.description}
+          />
+          <h3>Informações de endereço</h3>
+          <Input
+            id="cep"
+            label="CEP"
+            type="text"
+            {...register("cep")}
+            error={errors.cep}
+          />
+          <div className="address-local">
+            <Input
+              id="state"
+              label="Estado"
+              type="text"
+              {...register("state")}
+              error={errors.state}
             />
-            <label htmlFor="buyer">Comprador</label>
+            <Input
+              id="city"
+              label="Cidade"
+              type="text"
+              {...register("city")}
+              error={errors.city}
+            />
           </div>
-          <div>
-            <input
-              type="radio"
-              id="advertiser"
-              value="true"
-              {...register("isAdvertiser")}
+          <Input
+            id="street"
+            label="Rua"
+            type="text"
+            {...register("street")}
+            error={errors.street}
+          />
+          <div className="details-address">
+            <Input
+              id="number"
+              label="Número"
+              type="text"
+              {...register("number")}
+              error={errors.number}
             />
-            <label htmlFor="advertiser">Anunciante</label>
+            <Input
+              id="complement"
+              label="Complemento"
+              type="text"
+              {...register("complement")}
+              error={errors.complement}
+            />
+          </div>
+          <h3>Tipo de conta</h3>
+          <div className="type-account">
+            <div className="input-radio">
+              <input
+                type="radio"
+                id="buyer"
+                value="false"
+                {...register("isAdvertiser")}
+              />
+              <label htmlFor="buyer">Comprador</label>
+            </div>
+            <div className="input-radio">
+              <input
+                type="radio"
+                id="advertiser"
+                value="true"
+                {...register("isAdvertiser")}
+              />
+              <label htmlFor="advertiser">Anunciante</label>
+            </div>
           </div>
           <Input
             id="password"
@@ -145,10 +153,10 @@ export const RegisterPage = () => {
             type="password"
             {...register("confirm")}
             error={errors.confirm}
-          />{" "}
-        </div>
-        <button type="submit">Cadastrar</button>
-      </form>
+          />
+          <button type="submit">Finalizar cadastro</button>
+        </form>
+      </ContainerRegister>
       <Footer />
       {isModalOpenSucessRegister && (
         <RegisterSucessModal
