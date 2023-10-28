@@ -6,15 +6,11 @@ export const FooterPage = styled.footer`
   text-align: center;
   padding: 2rem 0;
 
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.7rem;
+  h1 {
     margin-bottom: 3rem;
   }
-  h1 {
-    font-size: var(--heading-2-600-font-size);
+  .small-text {
+    font-size: var(--heading-6-500-font-size);
   }
   p {
     font-size: var(--body-2-400-font-size);

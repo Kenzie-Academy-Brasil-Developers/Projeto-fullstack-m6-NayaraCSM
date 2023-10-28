@@ -12,6 +12,10 @@ export const Header = styled.header`
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    font-weight: var(--heading-7-600-font-weight: 600);
+  }
+  .small-text {
+    font-size: var(--heading-6-500-font-size);
   }
 `;
 

@@ -13,7 +13,9 @@ const HeaderRoutePrivate = (): JSX.Element => {
 
   return (
     <header>
-      <h1>Motors shop</h1>
+      <h1>
+        Motors <span className="small-text">shop</span>
+      </h1>
       <div className="menu-mobile">
         <button
           onClick={OpenMenu}

@@ -3,10 +3,9 @@ import { FooterPage } from "./styled";
 const Footer = () => {
   return (
     <FooterPage>
-      <div className="logo">
-        <h1>Motors </h1>
-        <h2>shop</h2>
-      </div>
+      <h1>
+        Motors <span className="small-text">shop</span>
+      </h1>
       <p>© 2023 - Todos os direitos reservados.</p>
       <button>^</button>
     </FooterPage>

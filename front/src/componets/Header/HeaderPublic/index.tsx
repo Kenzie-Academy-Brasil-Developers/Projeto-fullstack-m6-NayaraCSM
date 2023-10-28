@@ -13,7 +13,9 @@ const HeaderRoutePublic = (): JSX.Element => {
 
   return (
     <Header>
-      <h1>Motors shop</h1>
+      <h1>
+        Motors <span className="small-text">shop</span>
+      </h1>
       <MenuMobile>
         <button
           onClick={OpenMenu}
