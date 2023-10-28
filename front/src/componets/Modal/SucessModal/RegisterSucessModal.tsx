@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import close from "../../../assets/icon-close-modal.svg";
+import close from "../../../assets/icons-close-modal.svg";
 
-const RegisterSucessModal = () => {
+interface IRegisterModalSucessProps {
+  closeModalSucessRegister: () => void;
+}
+
+const RegisterSucessModal = ({
+  closeModalSucessRegister,
+}: IRegisterModalSucessProps) => {
   return (
     <div>
       <div role="dialog">
         <div>
           <h3>Sucesso!</h3>
-          <button>
+          <button onClick={closeModalSucessRegister}>
             <img src={close} />
           </button>
         </div>

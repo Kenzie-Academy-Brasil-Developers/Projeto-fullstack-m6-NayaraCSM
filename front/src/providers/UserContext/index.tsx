@@ -13,6 +13,8 @@ interface UserContextValues {
   newUser: (data: TRegisterData) => void;
   logout: () => void;
   loading: boolean;
+  isModalOpenSucessRegister: boolean;
+  setIsModalOpenSucessRegister: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserContextValues>(
@@ -22,6 +24,8 @@ export const UserContext = createContext<UserContextValues>(
 export const UserProvider = ({ children }: UserProviderProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [isModalOpenSucessRegister, setIsModalOpenSucessRegister] =
+    useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("user:token");
@@ -68,7 +72,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     }
     try {
       await api.post("/user", body);
-      navigate("login");
+      setIsModalOpenSucessRegister(true);
     } catch (err) {
       console.log(err);
     }
@@ -80,7 +84,16 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ signIn, newUser, logout, loading }}>
+    <UserContext.Provider
+      value={{
+        signIn,
+        newUser,
+        logout,
+        loading,
+        isModalOpenSucessRegister,
+        setIsModalOpenSucessRegister,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -5,9 +5,10 @@ import { TRegisterData, registerSchema } from "./validator";
 import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import Input from "../../componets/Input";
 import Footer from "../../componets/Footer";
+import RegisterSucessModal from "../../componets/Modal/SucessModal/RegisterSucessModal";
 
 export const RegisterPage = () => {
-  const { newUser } = useAuth();
+  const { newUser, isModalOpenSucessRegister, setIsModalOpenSucessRegister } = useAuth();
   const {
     register,
     handleSubmit,
@@ -15,6 +16,10 @@ export const RegisterPage = () => {
   } = useForm<TRegisterData>({
     resolver: zodResolver(registerSchema),
   });
+
+  const closeModalSucessRegister = () => {
+    setIsModalOpenSucessRegister(false);
+  };
 
   return (
     <main>
@@ -145,6 +150,11 @@ export const RegisterPage = () => {
         <button type="submit">Cadastrar</button>
       </form>
       <Footer />
+      {isModalOpenSucessRegister && (
+        <RegisterSucessModal
+          closeModalSucessRegister={closeModalSucessRegister}
+        />
+      )}
     </main>
   );
 };
