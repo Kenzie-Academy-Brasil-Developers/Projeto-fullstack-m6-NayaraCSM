@@ -6,6 +6,7 @@ import car from "../../assets/Photo.svg";
 import CardAnouncement from "../../componets/CardAnouncement";
 import Footer from "../../componets/Footer";
 import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
+import { ContainerHome } from "./styled";
 
 export interface IAnouncement {
   id: number;
@@ -46,21 +47,28 @@ const HomePage = () => {
 
   return (
     <main>
-      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
-      <div>
-        <img src={car} />
-        <h3>Motors Shop</h3>
-        <p>A melhor plataforma de anúncios de carros do país</p>
-      </div>
-      <ul>
-        {anouncements.map((anouncement) => {
-          return (
-            <Link to={`/anouncement/${anouncement.id}`} key={anouncement.id}>
-              <CardAnouncement anouncement={anouncement} />
-            </Link>
-          );
-        })}
-      </ul>
+      {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}
+      <ContainerHome>
+        <div className="home">
+          <img src={car} className="img-home" />
+          <h3>Motors Shop</h3>
+          <p>A melhor plataforma de anúncios de carros do país</p>
+        </div>
+        <div className="vitrine">
+          <ul>
+            {anouncements.map((anouncement) => {
+              return (
+                <Link
+                  to={`/anouncement/${anouncement.id}`}
+                  key={anouncement.id}
+                >
+                  <CardAnouncement anouncement={anouncement} />
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
+      </ContainerHome>
       <Footer />
     </main>
   );
