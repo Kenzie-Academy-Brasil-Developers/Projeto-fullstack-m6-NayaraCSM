@@ -50,9 +50,11 @@ const HomePage = () => {
       {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}
       <ContainerHome>
         <div className="home">
-          <img src={car} className="img-home" />
           <h3>Motors Shop</h3>
           <p>A melhor plataforma de anúncios de carros do país</p>
+        </div>
+        <div className="image-car">
+          <img src={car} className="img-home" />
         </div>
         <div className="vitrine">
           <ul>

@@ -10,19 +10,38 @@ export const ContainerHome = styled.div`
     color: inherit;
     cursor: poiter;
   }
+  h3 {
+    margin-top: 2rem;
+  }
+  p {
+    margin-top: 1rem;
+  }
   .home {
+    width: 100%;
+    text-align: center;
+    height: -webkit-fill-available;
     background-image: linear-gradient(
       to bottom,
-      var(--color-grey-7),
-      var(--color-grey-3),
-      var(--color-grey-0)
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 1)
     );
+    color: var(--color-white-fixed);
+    position: absolute;
+    z-index: 1;
   }
+  .image-car {
+    position: relative;
+    z-index: 0;
+    margin-botton: 5rem;
+  }
+
   .vitrine {
+    margin: 12rem 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
   }
   ul {
     width: 100%;

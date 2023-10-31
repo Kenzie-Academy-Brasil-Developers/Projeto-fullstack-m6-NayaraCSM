@@ -6,6 +6,7 @@ import HeaderRoutePublic from "../../componets/Header/HeaderPublic";
 import CardComment from "../../componets/CardComment";
 import Footer from "../../componets/Footer";
 import HeaderRoutePrivate from "../../componets/Header/HeaderPrivate";
+import { SectionAnouncement } from "./styled";
 
 const AnouncementPage = () => {
   const [anouncement, setAnouncement] = useState<IAnouncement | null>(null);
@@ -23,17 +24,20 @@ const AnouncementPage = () => {
   return (
     <main>
       {token ? <HeaderRoutePrivate /> : <HeaderRoutePublic />}{" "}
-      <section>
-        <div>
+      <SectionAnouncement>
+        <div className="image-background">
           <img src={anouncement?.image[0].image} alt="imagem de um carro" />
         </div>
         <div>
           <h3>
             {anouncement?.brand} {anouncement?.model}
           </h3>
-          <div>
-            <span>{anouncement?.year}</span>
-            <span>{anouncement?.mileage} Km</span>
+          <div className="anouncement-info">
+            <div className="info-car">
+              <p className="mileage">{anouncement?.mileage} Km</p>
+              <p className="year">{anouncement?.year}</p>
+            </div>
+            <p className="price">R$ {anouncement?.price}</p>
           </div>
           <button>Comprar</button>
         </div>
@@ -56,9 +60,9 @@ const AnouncementPage = () => {
             <button>Recomendarei para meus amigos!</button>
           </div>
         </div>
-      </section>
+      </SectionAnouncement>
       <section>
-        <div>
+        <div className="menu-images">
           <h3>Fotos</h3>
           <ul>
             {anouncement?.image.map((image: IImage) => {

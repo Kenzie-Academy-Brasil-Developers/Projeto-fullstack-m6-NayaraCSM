@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const LiAnouncement = styled.li`
-  width: 75vw;
+  width: 285px;
   height: 85vh;
-  margin: 3rem 1rem 2rem 2rem;
+  margin: 3rem 0.5rem 2rem 1.5rem;
   img {
-    width: 315px;
+    width: 285px;
     height: 35vh;
   }
   h3 {
